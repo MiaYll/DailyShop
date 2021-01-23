@@ -11,7 +11,20 @@ public class Buyer {
         this.playerName = p.getName();
     }
 
+    public Buyer(String name, int times) {
+        this.times = times;
+        this.playerName = name;
+    }
+
     public void addTimes(){
         times ++;
+    }
+
+    public int getTimes() {
+        return times;
+    }
+
+    public String getPlayerName() {
+        return playerName;
     }
 }

@@ -11,8 +11,11 @@ public class Lang {
     private static YamlConfiguration lang;
     private static String prefix;
 
-    public static String getLang(String key){
-        return prefix + lang.getString(key);
+    public static String getLang(String key,boolean hasPrefix){
+        if(hasPrefix){
+            return prefix + lang.getString(key).replaceAll("&","§");
+        }
+        return lang.getString(key).replaceAll("&","§");
     }
 
     public static List<String> getLangList(String key){
@@ -20,7 +23,7 @@ public class Lang {
     }
 
     public static void init(Plugin plugin){
-        File file = new File(plugin.getDataFolder() + "lang.yml");
+        File file = new File(plugin.getDataFolder() + "/lang.yml");
         if(!file.exists()){
             plugin.saveResource("lang.yml",false);
         }

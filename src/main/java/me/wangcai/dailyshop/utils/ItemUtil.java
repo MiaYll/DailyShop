@@ -24,12 +24,13 @@ public class ItemUtil {
         for (int i = 0; i < lore.size(); i++) {
             String line = lore.get(i);
             lore.set(i,line.replaceAll("%money%", String.valueOf(lc.getValue()))
-                    .replaceAll("%nowself%", String.valueOf(lc.getPlayerBuyCount(p))
-                            .replaceAll("%nowserver%", String.valueOf(lc.getNowServerBuy()))
-                            .replaceAll("%selfmax%", String.valueOf(lc.getSelfMaxBuy()))
-                            .replaceAll("%servermax%", String.valueOf(lc.getServerMaxBuy()))
-                            .replaceAll("%currency%",lc.isPoint() ? Lang.getLang("points"):Lang.getLang("money"))
-                ));
+                    .replaceAll("%nowself%", String.valueOf(lc.getPlayerBuyCount(p)))
+                    .replaceAll("%nowserver%", String.valueOf(lc.getNowServerBuy()))
+                    .replaceAll("%selfmax%", String.valueOf(lc.getSelfMaxBuy()))
+                    .replaceAll("%servermax%", String.valueOf(lc.getServerMaxBuy()))
+                    .replaceAll("%currency%",lc.isPoint() ? Lang.getLang("points",false):Lang.getLang("money",false))
+                    .replaceAll("&","§")
+                );
         }
         return lore;
     }

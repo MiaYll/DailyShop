@@ -1,3 +1,7 @@
 name: DailyShop
 version: ${project.version}
 main: me.wangcai.dailyshop.DailyShop
+
+commands:
+  dailyshop:
+    description: "插件命令"

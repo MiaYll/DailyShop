@@ -21,7 +21,7 @@ public class VaultHook {
         if(!getCurrency().has(p,vaule)){
             return false;
         }
-        getCurrency().depositPlayer(p,vaule);
+        getCurrency().withdrawPlayer(p,vaule);
         return true;
     }
 }
