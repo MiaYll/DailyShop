@@ -3,8 +3,10 @@ package me.wangcai.dailyshop.utils;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
+import java.util.List;
+
 public class PlayerUtil {
-    public static void runCmd(Player p,String... cmds){
+    public static void runCmd(Player p, List<String> cmds){
         for (String cmd : cmds) {
             cmd = cmd.replaceAll("%player%",p.getName());
             boolean isOp = p.isOp();

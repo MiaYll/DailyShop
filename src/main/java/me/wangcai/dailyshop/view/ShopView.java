@@ -47,7 +47,7 @@ public class ShopView implements Listener {
             inv.setItem(slot, listedCommodity.toIcon(p));
             listedCommoditys.put(slot, listedCommodity);
             slot++;
-            if (slot % 9 == 0) {
+            if (slot % 9 == 8) {
                 slot += 2;
             }
         }

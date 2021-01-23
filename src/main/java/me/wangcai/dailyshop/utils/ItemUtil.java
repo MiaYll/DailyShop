@@ -2,6 +2,7 @@ package me.wangcai.dailyshop.utils;
 
 import me.wangcai.dailyshop.config.Lang;
 import me.wangcai.dailyshop.model.ListedCommodity;
+import org.bukkit.craftbukkit.v1_12_R1.inventory.CraftItemStack;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -34,4 +35,5 @@ public class ItemUtil {
         }
         return lore;
     }
+
 }

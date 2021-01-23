@@ -29,7 +29,7 @@ public class Commodity {
         this.serverMaxBuy = config.getInt("serverMaxBuy");
         this.chance = config.getInt("chance");
         int id = config.getInt("id");
-        String itemName = config.getString("name");
+        String itemName = config.getString("name").replaceAll("&","§");
         List<String> lore = config.getStringList("lore");
         this.icon = ItemUtil.createItem(id,itemName,lore);
         isPut = false;

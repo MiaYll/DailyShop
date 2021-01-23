@@ -6,6 +6,7 @@ import me.wangcai.dailyshop.hook.VaultHook;
 import me.wangcai.dailyshop.manager.ShopManager;
 import me.wangcai.dailyshop.utils.ItemUtil;
 import me.wangcai.dailyshop.utils.PlayerUtil;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -37,7 +38,7 @@ public class ListedCommodity extends Commodity {
         Buyer buyer = new Buyer(p);
         boolean has = false;
         for (Buyer buyer1 : buyerList) {
-            if(buyer.playerName.equals(p.getName())){
+            if(buyer1.playerName.equals(p.getName())){
                 has = true;
                 buyer = buyer1;
                 break;
@@ -64,8 +65,9 @@ public class ListedCommodity extends Commodity {
                 return false;
             }
         }
-        PlayerUtil.runCmd(p,getCmds().toArray(new String[getCmds().size()]));
+        PlayerUtil.runCmd(p,getCmds());
         p.sendMessage(Lang.getLang("success",true));
+        p.closeInventory();
         buyer.addTimes();
         nowServerBuy++;
         ShopManager.saveDate();
@@ -76,7 +78,8 @@ public class ListedCommodity extends Commodity {
         ItemStack item = this.getIcon().clone();
         ItemMeta meta = item.getItemMeta();
         List<String> lore = meta.getLore();
-        lore.addAll(ItemUtil.replaceLore(this,Lang.getLangList("lore"),p));
+        lore.addAll(Lang.getLangList("lore"));
+        lore = ItemUtil.replaceLore(this,lore,p);
         meta.setLore(lore);
         item.setItemMeta(meta);
         return item;
@@ -98,8 +101,11 @@ public class ListedCommodity extends Commodity {
     public void loadData(ConfigurationSection config){
         nowServerBuy = config.getInt("nowServerBuy");
         ConfigurationSection buyerListConfig = config.getConfigurationSection("buyerlist");
+        if(buyerListConfig == null){
+            return;
+        }
         for (String key : buyerListConfig.getKeys(false)) {
-            buyerList.add(new Buyer(key,buyerListConfig.getInt("times")));
+            buyerList.add(new Buyer(key,buyerListConfig.getInt(key)));
         }
 
     }
