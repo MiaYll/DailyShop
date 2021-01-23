@@ -1,0 +1,12 @@
+1:
+  id: 1
+  name: 1
+  lore:
+    - "一个石头"
+  value: 10
+  isPoint: false
+  cmds:
+    - "give %player% 1 1"
+  selfMaxBuy: 1
+  serverMaxBuy: 10
+  chance: 3

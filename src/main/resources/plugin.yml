@@ -1,0 +1,3 @@
+name: DailyShop
+version: ${project.version}
+main: me.wangcai.dailyshop.DailyShop
