@@ -92,9 +92,14 @@ public class ShopManager {
             index ++;
             config.set(index + ".name",commodity.getName());
             config.set(index +".nowServerBuy",commodity.getNowServerBuy());
-            for (Buyer buyer : commodity.getBuyerList()) {
-                config.set(index + ".buyerlist." + buyer.getPlayerName(),buyer.getTimes());
+            if(commodity.getBuyerList() == null || commodity.getBuyerList().size() == 0){
+                config.set(index + ".buyerlist",null);
+            }else{
+                for (Buyer buyer : commodity.getBuyerList()) {
+                    config.set(index + ".buyerlist." + buyer.getPlayerName(),buyer.getTimes());
+                }
             }
+
         }
         config.set("today",TimeUtil.getDay());
         config.save(file);
